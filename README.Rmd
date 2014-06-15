@@ -1,0 +1,28 @@
+# Meme Generation in R
+
+[![Build Status](https://travis-ci.org/leeper/meme.png?branch=master)](https://travis-ci.org/leeper/meme)
+
+According to [Wikipedia](http://en.wikipedia.org/wiki/Internet_meme):
+
+>An Internet meme (/'mi?m/ meem) is an activity, concept, catchphrase or piece of media which spreads, often as mimicry, from person to person via the Internet.
+
+**meme** is an R package that connects with several online image generators to create internet memes, which can then be loaded into R, plotted, and saved locally.
+
+## Installation ##
+
+At some point **meme** will be [available on CRAN](http://cran.r-project.org/web/packages/meme/index.html) and installed from within R from your favorite CRAN mirror:
+
+```
+install.packages("meme")
+```
+
+The latest development version, available here, can be installed directly using Hadley Wickham's [devtools](http://cran.r-project.org/web/packages/devtools/index.html) package:
+
+```
+if(!require("devtools")) install.packages("devtools")
+library("devtools")
+install_github("leeper/meme")
+```
+
+## Examples ##
+
