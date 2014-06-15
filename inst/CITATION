@@ -1,0 +1,15 @@
+citHeader("To cite package 'meme' in publications use:")
+     
+ year <- sub(".*(2[[:digit:]]{3})-.*", "\\1", meta$Date, perl = TRUE)
+ vers <- paste("R package version", meta$Version)
+ 
+ citEntry(entry="Manual",
+		  title = "meme: Meme Generation in R",
+		  author = personList(as.person("Thomas J. Leeper")),
+		  year = year,
+		  note = vers,
+		  textVersion =
+		  paste("Thomas J. Leeper (",
+				year,
+				"). meme: Meme Generation in R. ",
+				vers, ".", sep=""))

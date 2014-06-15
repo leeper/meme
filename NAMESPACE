@@ -1,0 +1,9 @@
+export(get_templates)
+export(create_meme)
+export(get_memes)
+S3method(plot, meme)
+S3method(plot, meme_template)
+
+import("jpeg")
+import("RJSONIO")
+importFrom(RCurl, curlPerform, basicTextGatherer, basicHeaderGatherer, dynCurlReader, getBinaryURL, curlEscape)
