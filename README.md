@@ -28,13 +28,15 @@ install_github("leeper/meme")
 
 Here are some simple examples using the package and the default [memecaptain](http://memecaptain.com/) generator. 
 
-```{r setup}
+
+```r
 #opts_knit$set(upload.fun = imgur_upload, base.url = NULL) # upload all images to imgur.com
-````
+```
 
 To get started, you can grab some image templates from one of the meme generator sites. We'll use memecaptain because it doesn't require a username and password.
 
-```{r templates}
+
+```r
 library("meme")
 templates <- get_templates("memecaptain")
 ```
@@ -48,20 +50,36 @@ invisible(lapply(templates, plot))
 
 Here are some example memes. These could probably be better, so pull requests are welcome!
 
-```{r allthethings, fig.width=5, fig.height=5, fig.path='inst/figures/'}
+
+```r
 plot(allthethings <- create_meme(templates[[2]], "Code", "all the things!"))
 ```
 
-```{r simply, fig.width=6, fig.height=5, fig.path='inst/figures/'}
+![plot of chunk allthethings](inst/figures/allthethings.png) 
+
+
+```r
 plot(simply <- create_meme(templates[[10]], "One does not simply", "reshape data from wide to long"))
 ```
 
-```{r yuno, fig.width=5, fig.height=5, fig.path='inst/figures/'}
+![plot of chunk simply](inst/figures/simply.png) 
+
+
+```r
 plot(yuno <- create_meme(templates[[55]], "R CMD check", "y u no work?"))
 ```
 
-```{r grumpy, fig.width=5, fig.height=7, fig.path='inst/figures/'}
+![plot of chunk yuno](inst/figures/yuno.png) 
+
+
+```r
 u <- "http://img4.wikia.nocookie.net/__cb20131009153844/villains/images/f/f6/Grumpy_Cat.jpg"
 plot(grumpy <- create_meme(u, "", "R-help"))
 ```
+
+```
+## 'template' is not of class 'meme_template'. Template assumed to be an image URL and meme will be generated with site 'memecaptain'.
+```
+
+![plot of chunk grumpy](inst/figures/grumpy.png) 
 
