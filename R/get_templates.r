@@ -53,7 +53,8 @@ get_templates <- function(site = "memecaptain", type = NULL, query = NULL, ...){
 
 plot.meme_template <- function(x, ...){
     j <- .readimage(x)
-    plot(NULL, xlim=c(0,1), ylim=c(0,1), xaxt='n', yaxt='n', xaxs='i', yaxs='i', mar=rep(0,4), mgp=rep(0,3), ...)
+    plot(NULL, xlim=c(0,1), ylim=c(0,1), xaxt='n', yaxt='n',
+         xaxs='i', yaxs='i', mar=rep(0,4), mgp=rep(0,3), ...)
     rasterImage(j, 0,0,1,1)
     invisible(x)
 }
