@@ -11,7 +11,7 @@ get_memes(site = "memegenerator", type = NULL, query = NULL, ...)
   \item{query}{When \code{site} is \dQuote{memegenerator} and \code{type} is \dQuote{trending} or \dQuote{topic}, \code{query} should specify an image name or search term, respectively.}
   \item{...}{Additional arguments to \code{curlPerform}.}
 }
-\details{}
+\details{A function to retrieve memes from the specified site. Currently only memegenerator is supported.}
 \value{A list of objects of class \dQuote{meme}.}
 %\references{}
 \author{Thomas J. Leeper}

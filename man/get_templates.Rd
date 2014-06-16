@@ -12,7 +12,7 @@ get_templates(site = "memecaptain", type = NULL, query = NULL, ...)
   \item{query}{When \code{site} is \dQuote{memegenerator} and \code{type} is \dQuote{related} or \dQuote{search}, \code{query} should specify an image name or search term, respectively.}
   \item{...}{Additional arguments to \code{curlPerform}.}
 }
-\details{}
+\details{This function retrieves a list of template images from the specified site, which can then be passed to \code{\link{create_meme}} for generating a meme image. The resulting list of objects are of class \dQuote{meme_template}, which has an associated S3 \code{print} method that will display the template image as a margin-free JPEG plot in the current graphics device.}
 \value{A list of objects of class \dQuote{meme_template}.}
 \references{
 \href{http://version1.api.memegenerator.net/}{memegenerator API}

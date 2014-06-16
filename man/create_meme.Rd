@@ -18,8 +18,10 @@ create_meme(template, upper, lower, username, password, site = NULL,
   \item{language}{If \code{site="memegenerator"}, optionally one of \dQuote{en} (English), \dQuote{es} (Spanish), \dQuote{ru} (Russia), or \dQuote{--} (other). Otherwise \code{NULL} (the default).}
   \item{...}{Additional arguments to \code{curlPerform}.}
 }
-\details{}
-\value{An object of class \dQuote{meme}.}
+\details{This function creates a meme image from a template image and specified text. If \code{template} is an object of class \dQuote{meme_template}, \code{create_meme} automatically determines the site to use for generating the meme. If \code{template} is simply an arbitrary image URL (specified as a character string), the meme image is generated using \href{http://memecaptain.com/}{memecaptain}.  The resulting list of objects are of class \dQuote{meme}, which has an associated S3 \code{print} method that will display the template image as a margin-free JPEG plot in the current graphics device.
+
+To create images with either imgflip or memegenerator, a username and password must be supplied. Important note: For memegenerator, username and password are passed as plain text, so use at your own risk.}
+\value{An object of class \dQuote{meme}, which includes a binary representation of the resulting meme image.}
 \references{
 \href{http://version1.api.memegenerator.net/}{memegenerator API}
 
