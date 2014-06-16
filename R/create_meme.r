@@ -2,7 +2,7 @@ create_meme <-
 function(template, upper = NULL, lower = NULL, username = NULL, password = NULL, site = NULL, 
          font = NULL, language = NULL, ...){
     if(class(template) != 'meme_template' & class(template) == 'character') {
-        warning("'template' is not of class 'meme_template'. Template assumted to be an image URL and meme will be generated with site 'memecaptain'.")
+        message("'template' is not of class 'meme_template'. Template assumed to be an image URL and meme will be generated with site 'memecaptain'.")
         template <- list(url = template)
         site <- 'memecaptain'
     } else {
