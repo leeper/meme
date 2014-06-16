@@ -1,4 +1,4 @@
-get_memes <- function(site = 'imgflip', type = NULL, query = NULL, ...){
+get_memes <- function(site = "memegenerator", type = NULL, query = NULL, ...){
     if(site == "imgflip") {
         stop("'imgflip' not currently supported")
     } else if(site == "memegenerator") {

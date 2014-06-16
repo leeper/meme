@@ -1,4 +1,4 @@
-get_templates <- function(site = "imgflip", type = NULL, query = NULL, ...){
+get_templates <- function(site = "memecaptain", type = NULL, query = NULL, ...){
     if(site == "imgflip") {
         u <- "https://api.imgflip.com/get_memes"
     } else if(site == "memegenerator") {
