@@ -26,14 +26,7 @@ install_github("leeper/meme")
 
 ## Examples ##
 
-Here are some simple examples using the package and the default [memecaptain](http://memecaptain.com/) generator. 
-
-
-```r
-#opts_knit$set(upload.fun = imgur_upload, base.url = NULL) # upload all images to imgur.com
-```
-
-To get started, you can grab some image templates from one of the meme generator sites. We'll use memecaptain because it doesn't require a username and password.
+Here are some simple examples using the package and the default [memecaptain](http://memecaptain.com/) generator. To get started, you can grab some image templates from one of the meme generator sites. We'll use memecaptain because it doesn't require a username and password.
 
 
 ```r
