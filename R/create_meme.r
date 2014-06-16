@@ -23,7 +23,7 @@ function(template, upper, lower, username, password, site = NULL,
         stop("Only 'imgflip', 'memegenerator', and 'memecaptain' are currently supported!")
     }
     
-    if(site %in% c('imgflip', 'memegenerator'){
+    if(site %in% c('imgflip', 'memegenerator')){
         b <- dynCurlReader()
         h <- basicHeaderGatherer()
         curlPerform(url = u, writefunction = b$update, headerfunction = h$update,
