@@ -26,3 +26,33 @@ install_github("leeper/meme")
 
 ## Examples ##
 
+Here are some simple examples using the package and the default [memecaptain](http://memecaptain.com/) generator. The examples here could be probably be better, so pull requests are welcome.
+
+```{r setup, echo=FALSE}
+opts_knit$set(upload.fun = imgur_upload, base.url = NULL) # upload all images to imgur.com
+````
+
+```{r templates, fig.width=8, fig.height=8}
+library("meme")
+templates <- get_templates("memecaptain")
+par( mfrow = n2mfrow(length(templates)), mar=rep(0,4), mgp=rep(0,3))
+invisible(lapply(templates, plot))
+```
+
+```{r, ref.label='templates', fig.width=5, fig.height=5}
+plot(allthethings <- create_meme(templates[[2]], "Code", "all the things!"))
+```
+
+```{r, ref.label='templates', fig.width=6, fig.height=5}
+plot(simply <- create_meme(templates[[10]], "One does not simply", "reshape data from wide to long"))
+```
+
+```{r, ref.label='templates', fig.width=5, fig.height=5}
+plot(yuno <- create_meme(templates[[55]], "R CMD check", "y u no work?"))
+```
+
+```{r, ref.label='templates', fig.width=5, fig.height=7}
+u <- "http://img4.wikia.nocookie.net/__cb20131009153844/villains/images/f/f6/Grumpy_Cat.jpg"
+plot(grumpy <- create_meme(u, "", "R-help"))
+```
+
