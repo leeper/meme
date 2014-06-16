@@ -13,5 +13,5 @@
         readfun <- switch(ext, 'jpg'=readJPEG, 'jpeg'=readJPEG, 'png'=readPNG)
         out <- do.call(readfun, list(contents))
     }
-    structure(out, extension=ext)
+    out
 }
