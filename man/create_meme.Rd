@@ -4,7 +4,8 @@
 \title{Create meme}
 \description{Create a meme from a template image}
 \usage{
-create_meme(template, upper, lower, username, password, site = NULL, 
+create_meme(template, upper = NULL, lower = NULL, 
+            username = NULL, password = NULL, site = NULL, 
             font = NULL, language = NULL, ...)
 }
 \arguments{

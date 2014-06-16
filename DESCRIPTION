@@ -4,7 +4,7 @@ Date: 2014-06-14
 Title: Meme Generation in R
 Author: Thomas J. Leeper
 Maintainer: Thomas J. Leeper <thosjleeper@gmail.com>
-Imports: RCurl, RJSONIO, jpeg
+Imports: RCurl, RJSONIO, jpeg, png, tools
 Description: Generate memes on a variety of meme generators from R
 License: GPL-2
 URL: https://github.com/leeper/meme

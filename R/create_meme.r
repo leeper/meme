@@ -1,24 +1,27 @@
 create_meme <-
-function(template, upper, lower, username, password, site = NULL, 
+function(template, upper = NULL, lower = NULL, username = NULL, password = NULL, site = NULL, 
          font = NULL, language = NULL, ...){
     if(class(template) != 'meme_template' & class(template) == 'character') {
         warning("'template' is not of class 'meme_template'. Template assumted to be an image URL and meme will be generated with site 'memecaptain'.")
+        template <- list(url = template)
         site <- 'memecaptain'
+    } else {
+        site <- attr(template, 'site')
     }
     if(site == "imgflip") {
         base <- "https://api.imgflip.com/caption_image?"
         u <- paste(base, 'template_id=', template$id,
                    '&username=', username, '&password=', password,
-                   '&text0=',upper, '&text1=', lower,
+                   '&text0=',curlEscape(upper), '&text1=', curlEscape(lower),
                    if(!is.null(font)) paste('&font=', font))
     } else if(site == "memegenerator") {
         base <- 'https://version1.api.memegenerator.net/Instance_Create?'
         u <- paste(base, 'generatorID=', template$generatorID,
                    '&username=', username, '&password=', password,
-                   '&text0=',upper, '&text1=', lower,
+                   '&text0=',curlEscape(upper), '&text1=', curlEscape(lower),
                    if(!is.null(language)) paste('&languageCode=', language))
     } else if(site == "memecaptain") {
-        u <- paste0("http://v1.memecaptain.com/i?",'u=',template,'&t1=',upper,'&t2=',lower)
+        u <- paste0("http://v1.memecaptain.com/i?",'u=',curlEscape(template$url),'&t1=',curlEscape(upper),'&t2=',curlEscape(lower))
     } else {
         stop("Only 'imgflip', 'memegenerator', and 'memecaptain' are currently supported!")
     }
@@ -56,18 +59,8 @@ function(template, upper, lower, username, password, site = NULL,
 }
 
 plot.meme <- function(x, ...){
-    if('meme' %in% names(x)) {
-        j <- readJPEG(x$meme)
-    } else {
-        if(attr(x,'site') == 'imgflip')
-            j <- readJPEG(getBinaryURL(x$url))
-        else if(attr(x,'site') == 'memegenerator')
-            j <- readJPEG(x$imageUrl)
-        else if(attr(x,'site') == 'memecaptain')
-            stop("If site=='memecaptain', x must supply 'meme' field")
-    }
-    par(mar=rep(0,4), mgp=rep(0,3))
-    plot(NULL, xlim=c(0,1), ylim=c(0,1), xaxs='i', yaxs='i')
+    j <- .readimage(x)
+    plot(NULL, xlim=c(0,1), ylim=c(0,1), xaxs='i', yaxs='i', mar=rep(0,4), mgp=rep(0,3), ...)
     rasterImage(j, 0,0,1,1)
     invisible(x)
 }

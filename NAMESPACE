@@ -5,5 +5,7 @@ S3method(plot, meme)
 S3method(plot, meme_template)
 
 import("jpeg")
+import("png")
 import("RJSONIO")
+importFrom(tools, file_ext)
 importFrom(RCurl, curlPerform, basicTextGatherer, basicHeaderGatherer, dynCurlReader, getBinaryURL, curlEscape)
