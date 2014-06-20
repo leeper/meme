@@ -10,16 +10,16 @@ function(template, upper = NULL, lower = NULL, username = NULL, password = NULL,
     }
     if(site == "imgflip") {
         base <- "https://api.imgflip.com/caption_image?"
-        u <- paste(base, 'template_id=', template$id,
-                   '&username=', username, '&password=', password,
-                   '&text0=',curlEscape(upper), '&text1=', curlEscape(lower),
-                   if(!is.null(font)) paste('&font=', font))
+        u <- paste0(base, 'template_id=', template$id,
+                    '&username=', username, '&password=', password,
+                    '&text0=',curlEscape(upper), '&text1=', curlEscape(lower),
+                    if(!is.null(font)) paste('&font=', font))
     } else if(site == "memegenerator") {
         base <- 'https://version1.api.memegenerator.net/Instance_Create?'
-        u <- paste(base, 'generatorID=', template$generatorID,
-                   '&username=', username, '&password=', password,
-                   '&text0=',curlEscape(upper), '&text1=', curlEscape(lower),
-                   if(!is.null(language)) paste('&languageCode=', language))
+        u <- paste0(base, 'generatorID=', template$generatorID,
+                    '&username=', username, '&password=', password,
+                    '&text0=',curlEscape(upper), '&text1=', curlEscape(lower),
+                    if(!is.null(language)) paste('&languageCode=', language))
     } else if(site == "memecaptain") {
         u <- paste0("http://v1.memecaptain.com/i?",'u=',curlEscape(template$url),'&t1=',curlEscape(upper),'&t2=',curlEscape(lower))
     } else {
@@ -33,12 +33,12 @@ function(template, upper = NULL, lower = NULL, username = NULL, password = NULL,
                     ssl.verifypeer = 1L, ssl.verifyhost = 2L,
                     cainfo = system.file("CurlSSL", "cacert.pem", package = "RCurl"), ...)
         if(h$value()["status"] != "200")
-            warning("HTTP Status", h$value()["status"], ": ", h$value()["statusMessage"])
+            warning("HTTP Status ", h$value()["status"], ": ", h$value()["statusMessage"])
         
         if(site == "imgflip") {
             out <- fromJSON(b$value())
             if(out$success)
-                return(structure(c(as.list(out$data), meme = getBinaryURL(out$data$url)), 
+                return(structure(c(as.list(out$data), meme = getBinaryURL(out$data["url"])), 
                                  class = "meme", site = site))
             else
                 stop(out$error_message)
@@ -50,7 +50,10 @@ function(template, upper = NULL, lower = NULL, username = NULL, password = NULL,
                 return(NULL)
         }
     } else if(site == "memecaptain") {
-        out <- getBinaryURL(u)
+        h <- basicHeaderGatherer()
+        out <- getBinaryURL(u, headerfunction = h$update)
+        if(h$value()["status"] != "200")
+            warning("HTTP Status ", h$value()["status"], ": ", h$value()["statusMessage"])
         return(structure(list(url = u, meme = out), class = "meme", site = site))
     } else {
         return(NULL)
